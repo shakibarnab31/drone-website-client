@@ -10,7 +10,6 @@ const useFirebase = () => {
     const [authError, setAuthError] = useState('');
     const [isLoading, setIsLoading] = useState(true)
     const [admin, setAdmin] = useState(false)
-    console.log(admin)
 
     const auth = getAuth();
 
@@ -70,11 +69,7 @@ const useFirebase = () => {
     }, [])
 
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => setAdmin(data.admin))
-    }, [user.email])
+
 
     const logOut = () => {
         signOut(auth)
@@ -93,6 +88,13 @@ const useFirebase = () => {
             body: JSON.stringify(user)
         })
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     return {
         user,
         authError,

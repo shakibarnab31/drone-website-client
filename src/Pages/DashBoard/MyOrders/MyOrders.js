@@ -6,17 +6,41 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { Button } from '@mui/material';
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
+    const [control, setControl] = useState(false)
     const { user } = useAuth()
 
     useEffect(() => {
-        const url = `http://localhost:5000/orderedProducts?email=${user.email}`;
+        const url = `http://localhost:5000/orderedProducts?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyOrders(data))
-    }, [])
+    }, [user.email, control])
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure you want to delete this?');
+        if (proceed) {
+            fetch(`http://localhost:5000/deleteMyOrder/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        setControl(!control)
+                    }
+                    else {
+                        setControl(false)
+                    }
+                })
+        }
+
+    }
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -39,6 +63,7 @@ const MyOrders = () => {
                                 <Typography sx={{ fontWeight: 'bold' }} variant="body2">
                                     Status: {myOrder.status}
                                 </Typography>
+                                <Button onClick={() => handleDelete(myOrder._id)} sx={{ mt: 2, backgroundColor: 'red' }} size="small" variant="contained">Delete</Button>
                             </CardContent>
 
                         </Card>

@@ -22,6 +22,9 @@ import MyOrders from '../MyOrders/MyOrders';
 import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageOrders from '../MangeOrders/ManageOrders';
+import AddProduct from '../AddProduct/AddProduct';
+import ManageProducts from '../ManageProducts/ManageProducts';
 
 
 
@@ -51,7 +54,9 @@ function DashBoard(props) {
             {user.email && <Button onClick={logOut} variant="contained"> Logout</Button>}
             {admin && <Box>
                 <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-                <Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
+                <Link to={`${url}/manageOrders`}><Button color="inherit">Manage Orders</Button></Link>
+                <Link to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link>
+                <Link to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
             </Box>}
         </div>
     );
@@ -68,7 +73,7 @@ function DashBoard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar sx={{ backgroundColor: '#fc6432' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -97,7 +102,6 @@ function DashBoard(props) {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
@@ -127,6 +131,15 @@ function DashBoard(props) {
 
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageOrders`}>
+                        <ManageOrders></ManageOrders>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addProduct`}>
+                        <AddProduct></AddProduct>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProducts`}>
+                        <ManageProducts></ManageProducts>
                     </AdminRoute>
                 </Switch>
             </Box>
