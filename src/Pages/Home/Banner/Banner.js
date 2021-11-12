@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
 import './Banner.css'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -25,7 +26,7 @@ const Banner = () => {
                         <Typography variant="h6" sx={{ fontSize: 14, my: 3, color: 'black' }}>
                             Drona is the one of the best drone shops in the word.Our unique designed products and quality always satisfies the consumer.visit our website and explore more.
                         </Typography>
-                        <Button sx={{ backgroundColor: '#fc6432' }} variant="contained">Explore more</Button>
+                        <Link to="/products"><Button sx={{ backgroundColor: '#fc6432' }} variant="contained">Explore more</Button></Link>
                     </Grid>
                 </Grid>
             </Container>

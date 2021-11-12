@@ -30,6 +30,8 @@ const Navigation = () => {
                             </Box>
                             <Container sx={{ display: 'flex', justifyContent: 'right' }} >
                                 <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><Button color="inherit" >Home</Button></Link>
+                                <Link style={{ textDecoration: 'none', color: 'white' }} to="/products"><Button color="inherit" >Products</Button></Link>
+                                <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><Button color="inherit" >Dash Board</Button></Link>
                                 {user.email ? <Button onClick={logOut} variant="contained"> Logout</Button> : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit" >login</Button></Link>}
                                 <Typography variant="h6">
                                     {user.email ? user.displayName : ''}
