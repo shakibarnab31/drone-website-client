@@ -25,6 +25,8 @@ import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageOrders from '../MangeOrders/ManageOrders';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageProducts from '../ManageProducts/ManageProducts';
+import AddReview from '../AddReview/AddReview';
+
 
 
 
@@ -50,6 +52,8 @@ function DashBoard(props) {
             <Link to="/products"><Button color="inherit">Products</Button></Link>
             <br />
             <Link to={`${url}`}><Button color="inherit">My Orders</Button></Link>
+            <br />
+            <Link to={`${url}/addReview`}><Button color="inherit">Add Review</Button></Link>
             <br />
             {user.email && <Button onClick={logOut} variant="contained"> Logout</Button>}
             {admin && <Box>
@@ -129,6 +133,9 @@ function DashBoard(props) {
                         <MyOrders></MyOrders>
                     </Route>
 
+                    <Route path={`${path}/addReview`}>
+                        <AddReview></AddReview>
+                    </Route>
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
                     </AdminRoute>

@@ -1,11 +1,41 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useForm } from "react-hook-form";
+
+
+
 
 const ManageOrders = () => {
 
     const [allOrders, setAllOrders] = useState([]);
     const [control, setControl] = useState(false);
+    const [orderId, setOrderId] = useState("");
+
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {
+        fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.modifiedCount) {
+                    setControl(!control)
+                }
+                else {
+                    setControl(false)
+                }
+            });
+    };
+
+
+
+    const handleOrderId = (id) => {
+        setOrderId(id);
+        console.log(id);
+    };
 
     useEffect(() => {
         fetch('http://localhost:5000/allorders')
@@ -34,6 +64,8 @@ const ManageOrders = () => {
         }
 
     }
+
+
     return (
         <div>
             <h2>manage orders</h2>
@@ -47,8 +79,9 @@ const ManageOrders = () => {
                             <TableCell align="left">Email</TableCell>
                             <TableCell align="left">Address</TableCell>
                             <TableCell align="left">Phone</TableCell>
+                            <TableCell align="left">Status</TableCell>
                             <TableCell align="left">Cancel</TableCell>
-                            <TableCell align="left">Approve</TableCell>
+                            <TableCell align="left">Status Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -65,8 +98,14 @@ const ManageOrders = () => {
                                 <TableCell sx={{ fontWeight: 'bold', fontSize: 15 }} align="left">{row.email}</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', fontSize: 15 }} align="left">{row.address}</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', fontSize: 15 }} align="left">{row.phone}</TableCell>
+                                <TableCell sx={{ fontWeight: 'bold', fontSize: 20, color: 'blue' }} align="left">{row.status}</TableCell>
                                 <TableCell align="left"><Button onClick={() => handleDelete(row._id)} variant="contained" sx={{ backgroundColor: 'crimson' }}>Delete</Button></TableCell>
-                                <TableCell align="left"><Button variant="contained">Approve</Button></TableCell>
+                                <TableCell align="left"><form onSubmit={handleSubmit(onSubmit)}>
+                                    <select onClick={() => handleOrderId(row?._id)} {...register("status")}>
+                                        <option value="shipped">shipped</option>
+                                    </select>
+                                    <input type="submit" />
+                                </form></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

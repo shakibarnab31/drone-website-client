@@ -61,7 +61,7 @@ const MyOrders = () => {
                                     {myOrder.productName}
                                 </Typography>
                                 <Typography sx={{ fontWeight: 'bold' }} variant="body2">
-                                    Status: {myOrder.status}
+                                    Status: <span style={{ color: 'blue' }}>{myOrder.status}</span>
                                 </Typography>
                                 <Button onClick={() => handleDelete(myOrder._id)} sx={{ mt: 2, backgroundColor: 'red' }} size="small" variant="contained">Delete</Button>
                             </CardContent>
