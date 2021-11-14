@@ -14,7 +14,7 @@ const ManageOrders = () => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+        fetch(`https://arcane-savannah-11922.herokuapp.com/statusUpdate/${orderId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
@@ -38,7 +38,7 @@ const ManageOrders = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://arcane-savannah-11922.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [control])
@@ -46,7 +46,7 @@ const ManageOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete this?');
         if (proceed) {
-            fetch(`http://localhost:5000/deleteOrder/${id}`, {
+            fetch(`https://arcane-savannah-11922.herokuapp.com/deleteOrder/${id}`, {
                 method: "DELETE",
                 headers: {
                     'content-type': 'application/json'

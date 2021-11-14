@@ -18,7 +18,7 @@ const ProductDetails = () => {
         orderedProduct.price = singleProduct.price;
         orderedProduct.img = singleProduct.img;
         orderedProduct.status = 'pending'
-        fetch('http://localhost:5000/orderedProduct', {
+        fetch('https://arcane-savannah-11922.herokuapp.com/orderedProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const ProductDetails = () => {
     };
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${productId}`;
+        const url = `https://arcane-savannah-11922.herokuapp.com/products/${productId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSingleProduct(data))

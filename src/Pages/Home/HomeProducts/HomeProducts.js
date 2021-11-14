@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const HomeProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://arcane-savannah-11922.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

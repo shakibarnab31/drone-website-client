@@ -21,7 +21,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay, A11y])
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://arcane-savannah-11922.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
 

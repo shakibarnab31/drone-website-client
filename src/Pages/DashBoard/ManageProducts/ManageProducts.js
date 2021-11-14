@@ -9,7 +9,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const [control, setControl] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://arcane-savannah-11922.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [control])
@@ -17,7 +17,7 @@ const ManageProducts = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete this?');
         if (proceed) {
-            fetch(`http://localhost:5000/deleteProduct/${id}`, {
+            fetch(`https://arcane-savannah-11922.herokuapp.com/deleteProduct/${id}`, {
                 method: "DELETE",
                 headers: {
                     'content-type': 'application/json'
