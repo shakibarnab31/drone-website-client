@@ -26,6 +26,9 @@ import ManageOrders from '../MangeOrders/ManageOrders';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageProducts from '../ManageProducts/ManageProducts';
 import AddReview from '../AddReview/AddReview';
+import Payment from '../Payment/Payment';
+import './DashBoard.css'
+import DashBoardHome from '../DashBoardHome/DashBoardHome';
 
 
 
@@ -49,19 +52,26 @@ function DashBoard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link to="/products"><Button color="inherit">Products</Button></Link>
-            <br />
-            <Link to={`${url}`}><Button color="inherit">My Orders</Button></Link>
-            <br />
-            <Link to={`${url}/addReview`}><Button color="inherit">Add Review</Button></Link>
-            <br />
-            {user.email && <Button onClick={logOut} variant="contained"> Logout</Button>}
-            {admin && <Box>
-                <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-                <Link to={`${url}/manageOrders`}><Button color="inherit">Manage Orders</Button></Link>
-                <Link to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link>
-                <Link to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
+            <Box sx={{ textAlign: 'left', ml: 2 }}>
+                <Link className='nav-item' to="/products"><Button color="inherit">Products</Button></Link>
+            </Box>
+            {!admin && <Box sx={{ textAlign: 'left', ml: 2 }}>
+                <Link className='nav-item' to={`${url}`}><Button color="inherit">DashBoard</Button></Link>
+                <br />
+                <Link className='nav-item' to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></Link>
+                <br />
+                <Link className='nav-item' to={`${url}/payment`}><Button color="inherit">Payment</Button></Link>
+                <br />
+                <Link className='nav-item' to={`${url}/addReview`}><Button color="inherit">Add Review</Button></Link>
             </Box>}
+            {admin && <Box sx={{ textAlign: 'left', ml: 2 }} >
+                <Link className='nav-item' to={`${url}`}><Button color="inherit">DashBoard</Button></Link>
+                <Link className='nav-item' to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+                <Link className='nav-item' to={`${url}/manageOrders`}><Button color="inherit">Manage Orders</Button></Link>
+                <Link className='nav-item' to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link>
+                <Link className='nav-item' to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
+            </Box>}
+            {user.email && <Box sx={{ textAlign: 'left', ml: 2 }}><Button onClick={logOut} variant="contained"> Logout</Button></Box>}
         </div>
     );
 
@@ -88,7 +98,7 @@ function DashBoard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        DashBoard
+                        {user?.displayName}' DashBoard
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -130,11 +140,17 @@ function DashBoard(props) {
                 <Toolbar />
                 <Switch>
                     <Route exact path={path}>
-                        <MyOrders></MyOrders>
+                        <DashBoardHome></DashBoardHome>
                     </Route>
 
+                    <Route path={`${path}/myOrders`}>
+                        <MyOrders></MyOrders>
+                    </Route>
                     <Route path={`${path}/addReview`}>
                         <AddReview></AddReview>
+                    </Route>
+                    <Route path={`${path}/payment`}>
+                        <Payment></Payment>
                     </Route>
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>

@@ -26,7 +26,7 @@ const Banner = () => {
                         <Typography variant="h6" sx={{ fontSize: 14, my: 3, color: 'black' }}>
                             Drona is the one of the best drone shops in the word.Our unique designed products and quality always satisfies the consumer.visit our website and explore more.
                         </Typography>
-                        <Link to="/products"><Button sx={{ backgroundColor: '#fc6432' }} variant="contained">Explore more</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to="/products"><Button sx={{ backgroundColor: '#fc6432' }} variant="contained">Explore more</Button></Link>
                     </Grid>
                 </Grid>
             </Container>

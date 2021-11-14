@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { Container } from '@mui/material';
 import './Products.css'
 import { Link } from 'react-router-dom';
+import Footer from '../../Shared/Footer/Footer';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -23,7 +24,7 @@ const Products = () => {
     return (
         <div>
             <Navigation></Navigation>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1, mb: 5 }}>
                 <Container>
                     <Typography sx={{ fontWeight: 'bold', my: 8 }} gutterBottom variant="h3" component="div">
                         Purchase Your Favourite Drone
@@ -61,6 +62,7 @@ const Products = () => {
                     </Grid>
                 </Container>
             </Box>
+            <Footer></Footer>
         </div>
     );
 };

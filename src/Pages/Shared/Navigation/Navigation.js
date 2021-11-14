@@ -5,12 +5,10 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button, Container, Hidden, makeStyles } from '@mui/material';
+import { Button, Container, Hidden } from '@mui/material';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Divider from '@mui/material/Divider';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import logo from '../../../images/logo.png'
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -31,9 +29,9 @@ const Navigation = () => {
                             <Container sx={{ display: 'flex', justifyContent: 'right' }} >
                                 <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><Button color="inherit" >Home</Button></Link>
                                 <Link style={{ textDecoration: 'none', color: 'white' }} to="/products"><Button color="inherit" >Products</Button></Link>
-                                <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><Button color="inherit" >Dash Board</Button></Link>
+                                {user.email && <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><Button color="inherit" >Dash Board</Button></Link>}
                                 {user.email ? <Button onClick={logOut} variant="contained"> Logout</Button> : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit" >login</Button></Link>}
-                                <Typography variant="h6">
+                                <Typography sx={{ ml: 2 }} variant="h6">
                                     {user.email ? user.displayName : ''}
                                 </Typography>
 
@@ -69,9 +67,13 @@ const Navigation = () => {
 
                                 <Link style={{ textDecoration: 'none', color: 'orange' }} to="/home"><Button color="inherit" >Home</Button></Link>
                                 <br />
+                                <Link style={{ textDecoration: 'none', color: 'orange' }} to="/products"><Button color="inherit" >Products</Button></Link>
+                                <br />
+                                {user.email && <Link style={{ textDecoration: 'none', color: 'orange' }} to="/dashboard"><Button color="inherit" >Dash Board</Button></Link>}
+                                <br />
                                 {user.email ? <Button onClick={logOut} variant="contained"> Logout</Button> : <Link style={{ textDecoration: 'none', color: 'orange' }} to="/login"><Button color="inherit" >login</Button></Link>}
                                 <br />
-                                <Typography sx={{ color: 'orange' }} variant="h6">
+                                <Typography sx={{ color: 'orange', ml: 2 }} variant="h6">
                                     {user.email ? user.displayName : ''}
                                 </Typography>
                             </Box>

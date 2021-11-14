@@ -11,7 +11,7 @@ import './Featured.css'
 const Featured = () => {
     return (
         <Box sx={{ flexGrow: 1, backgroundColor: '#f2f2f2', py: 5, mt: 8 }}>
-            <Typography sx={{ fontWeight: 'bold', my: 8 }} variant="h3">Our Featured</Typography>
+            <Typography sx={{ fontWeight: 'bold', my: 8, color: 'darkgoldenrod' }} variant="h3">Our Featured</Typography>
             <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={8}>

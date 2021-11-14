@@ -20,8 +20,8 @@ const HomeProducts = () => {
 
         <Box sx={{ flexGrow: 1 }}>
             <Container>
-                <Typography sx={{ fontWeight: 'bold', my: 8 }} gutterBottom variant="h3" component="div">
-                    Popular Drone
+                <Typography sx={{ fontWeight: 'bold', my: 8, color: 'crimson' }} gutterBottom variant="h3" component="div">
+                    Our Popular Drone
                 </Typography>
                 <Grid container spacing={2}>
                     {products.slice(0, 6).map(product => (

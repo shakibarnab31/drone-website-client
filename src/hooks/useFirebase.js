@@ -40,6 +40,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false))
     }
 
+
     const loginUser = (email, password, location, history) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
@@ -89,6 +90,7 @@ const useFirebase = () => {
         })
     }
 
+
     useEffect(() => {
         fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
@@ -96,7 +98,6 @@ const useFirebase = () => {
                 setAdmin(data.admin)
             })
     }, [user.email])
-
 
 
     return {

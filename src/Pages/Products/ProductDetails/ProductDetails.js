@@ -11,7 +11,6 @@ const ProductDetails = () => {
     const [singleProduct, setSingleProduct] = useState({});
     const { user } = useAuth();
     const [successOrder, setSuccessOrder] = useState(false)
-    console.log(user)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         let orderedProduct = data;

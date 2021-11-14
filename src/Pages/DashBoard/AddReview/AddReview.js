@@ -49,7 +49,7 @@ const AddReview = () => {
                     <br />
 
 
-                    <Button sx={{ width: "50%", mt: 2, backgroundColor: '#fc6432' }} type="submit" variant='contained'>Place Order</Button>
+                    <Button sx={{ width: "50%", mt: 2, backgroundColor: '#fc6432' }} type="submit" variant='contained'>Submit</Button>
                 </form>
             </Container>
         </div>
