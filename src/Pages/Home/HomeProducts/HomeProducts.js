@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 
 const HomeProducts = () => {
     const [products, setProducts] = useState([]);

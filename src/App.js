@@ -12,6 +12,7 @@ import ProductDetails from "./Pages/Products/ProductDetails/ProductDetails";
 import Products from "./Pages/Products/Products/Products";
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
+import NotFound from "./Pages/Shared/NotFound/NotFound";
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
               <Register></Register>
             </Route>
             <Route path="*">
-
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>
