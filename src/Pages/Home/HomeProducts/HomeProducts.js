@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Fade from 'react-reveal/Fade';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HomeProducts = () => {
     const [products, setProducts] = useState([]);
@@ -16,18 +17,22 @@ const HomeProducts = () => {
         fetch('https://arcane-savannah-11922.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
+    }, []);
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
     }, [])
     return (
 
         <Box sx={{ flexGrow: 1 }}>
             <Container>
-                <Typography sx={{ fontWeight: 'bold', my: 8, color: 'crimson' }} gutterBottom variant="h3" component="div">
+                <Typography data-aos="zoom-in-up" sx={{ fontWeight: 'bold', my: 8, color: 'crimson' }} gutterBottom variant="h3" component="div">
                     Our Popular Drone
                 </Typography>
                 <Grid container spacing={2}>
                     {products.slice(0, 6).map(product => (
                         <Grid key={product._id} item xs={12} md={4}>
-                            <Card className="product-card" sx={{ maxWidth: 360, textAlign: 'left', my: 2 }}>
+                            <Card className="product-card" data-aos="zoom-in-up" sx={{ maxWidth: 360, textAlign: 'left', my: 2 }}>
                                 <CardMedia
                                     component="img"
                                     height="250"

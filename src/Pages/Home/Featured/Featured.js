@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import featured from '../../../images/bg-featured.png'
@@ -8,17 +8,22 @@ import featured5 from '../../../images/featured-5.png'
 import featured6 from '../../../images/featured-6.png'
 import { Container, Typography } from '@mui/material';
 import './Featured.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Featured = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, [])
     return (
         <Box sx={{ flexGrow: 1, backgroundColor: '#f2f2f2', py: 5, mt: 8 }}>
-            <Typography sx={{ fontWeight: 'bold', my: 8, color: 'darkgoldenrod' }} variant="h3">Our Featured</Typography>
+            <Typography data-aos="zoom-in" sx={{ fontWeight: 'bold', my: 8, color: 'darkgoldenrod' }} variant="h3">Our Featured</Typography>
             <Container>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={8}>
+                    <Grid data-aos="zoom-in" item xs={12} md={8}>
                         <img style={{ width: '100%' }} src={featured} alt="" />
                     </Grid>
                     <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                        <Box className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2 }}>
+                        <Box data-aos="fade-left" className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2 }}>
                             <Box>
                                 <img style={{}} src={featured1} alt="" />
                             </Box>
@@ -31,7 +36,7 @@ const Featured = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                        <Box className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2, my: 3 }}>
+                        <Box data-aos="fade-left" className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2, my: 3 }}>
                             <Box>
                                 <img style={{}} src={featured2} alt="" />
                             </Box>
@@ -44,7 +49,7 @@ const Featured = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                        <Box className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2, mb: 3 }}>
+                        <Box data-aos="fade-left" className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2, mb: 3 }}>
                             <Box>
                                 <img style={{}} src={featured5} alt="" />
                             </Box>
@@ -57,7 +62,7 @@ const Featured = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                        <Box className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2 }}>
+                        <Box data-aos="fade-left" className="featured" sx={{ backgroundColor: 'white', width: '75%', borderRadius: 2 }}>
                             <Box>
                                 <img style={{}} src={featured6} alt="" />
                             </Box>

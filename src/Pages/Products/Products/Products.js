@@ -12,6 +12,8 @@ import { Container } from '@mui/material';
 import './Products.css'
 import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -21,18 +23,22 @@ const Products = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, [])
     return (
         <div>
             <Navigation></Navigation>
             <Box sx={{ flexGrow: 1, mb: 5 }}>
                 <Container>
-                    <Typography sx={{ fontWeight: 'bold', my: 8 }} gutterBottom variant="h3" component="div">
+                    <Typography data-aos="zoom-in-up" sx={{ fontWeight: 'bold', my: 8 }} gutterBottom variant="h3" component="div">
                         Purchase Your Favourite Drone
                     </Typography>
                     <Grid container spacing={2}>
                         {products.map(product => (
                             <Grid key={product._id} item xs={12} md={4}>
-                                <Card className="product-card" sx={{ maxWidth: 360, textAlign: 'left', my: 2 }}>
+                                <Card data-aos="zoom-in-up" className="product-card" sx={{ maxWidth: 360, textAlign: 'left', my: 2 }}>
                                     <CardMedia
                                         component="img"
                                         height="250"
